@@ -5,6 +5,7 @@ import heartIcon from '../../../images/icons/heart.svg';
 import addIcon from '../../../images/icons/add.svg';
 import paperBagIcon from '../../../images/icons/paper-bag.svg';
 import thunderIcon from '../../../images/icons/thunder.svg';
+import settingsIcon from '../../../images/icons/settings.svg';
 
 type IconProps = {
   width?: number;
@@ -47,4 +48,12 @@ const ThunderIcon = ({
   <SvgXmlWithRTL xml={thunderIcon} width={width} height={height} {...rest} />
 );
 
-export {HeartIcon, ThunderIcon, PaperBagIcon, AddIcon};
+const SettingsIcon = ({
+  width = 24,
+  height = 24,
+  ...rest
+}: IconProps): JSX.Element => (
+  <SvgXmlWithRTL xml={settingsIcon} width={width} height={height} {...rest} />
+);
+
+export {HeartIcon, ThunderIcon, PaperBagIcon, AddIcon, SettingsIcon};
