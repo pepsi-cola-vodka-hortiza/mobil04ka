@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {GREY_2, TEXT_GREY} from '../constants/colors';
+import {GRAY_2, TEXT_GREY} from '../constants/colors';
 
 type Props = {content: string};
 
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   item: {
     paddingVertical: 16,
     borderBottomWidth: 1,
-    borderColor: GREY_2,
+    borderColor: GRAY_2,
   },
   text: {
     fontSize: 16,

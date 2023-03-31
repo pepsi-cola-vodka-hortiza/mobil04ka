@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import {NoteModel} from '../types';
 import {NoteItem} from './NoteItem';
-import {GREY_1} from '../constants/colors';
+import {GRAY_1} from '../constants/colors';
 import {ApolloQueryResult, OperationVariables} from '@apollo/client';
 import Spinner from './Spinner';
 
@@ -59,6 +59,6 @@ export default NoteList;
 const styles = StyleSheet.create({
   list: {
     paddingHorizontal: 16,
-    backgroundColor: GREY_1,
+    backgroundColor: GRAY_1,
   },
 });

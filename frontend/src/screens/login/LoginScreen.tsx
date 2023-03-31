@@ -4,16 +4,17 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamListType} from '../../navigation/root/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import UserForm from '../../components/UserForm';
 
 type Props = {};
 
-const SignInScreen: React.FC<Props> = () => {
-  const {navigate} =
+const LoginScreen: React.FC<Props> = () => {
+  const {replace} =
     useNavigation<StackNavigationProp<RootStackParamListType>>();
 
   const storeToken = async () => {
     await AsyncStorage.setItem('token', 'abc');
-    navigate('RootTabs');
+    replace('RootTabs');
   };
 
   const checkLoginState = async () => {
@@ -21,7 +22,7 @@ const SignInScreen: React.FC<Props> = () => {
     if (!token) {
       return;
     }
-    navigate('RootTabs');
+    /*navigate('RootTabs');*/
   };
 
   useEffect(() => {
@@ -30,9 +31,9 @@ const SignInScreen: React.FC<Props> = () => {
 
   return (
     <View>
-      <Button title="Sign in!" onPress={storeToken} />
+      <UserForm />
     </View>
   );
 };
 
-export default SignInScreen;
+export default LoginScreen;
