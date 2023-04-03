@@ -2,15 +2,15 @@ import React, {useCallback, useEffect} from 'react';
 import {View, Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamListType} from '../../navigation/root/types';
+import {RootStackParamListType} from '../../../navigation/root/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import UserForm from '../../components/UserForm';
+import UserForm from '../components/UserForm';
 import {useMutation} from '@apollo/client';
-import {SIGNIN_USER} from '../../gql/mutation';
+import {SIGNIN_USER} from '../../../gql/mutation';
 
 type Props = {};
 
-const LoginScreen: React.FC<Props> = () => {
+const SignInScreen: React.FC<Props> = () => {
   const {replace} =
     useNavigation<StackNavigationProp<RootStackParamListType>>();
   const [signIn, {loading, error}] = useMutation(SIGNIN_USER, {
@@ -48,4 +48,4 @@ const LoginScreen: React.FC<Props> = () => {
   );
 };
 
-export default LoginScreen;
+export default SignInScreen;

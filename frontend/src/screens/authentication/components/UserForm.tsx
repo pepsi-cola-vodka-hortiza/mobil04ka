@@ -13,15 +13,18 @@ import {
   GRAY_5,
   PINK_1,
   TEXT_INPUT_GREY,
-} from '../constants/colors';
+} from '../../../constants/colors';
+import {AuthenticationFormType} from './types';
 
 type Props = {
+  formType: AuthenticationFormType;
   action: (variables: any) => Promise<any>; // типизировать
 };
 
-const UserForm: React.FC<Props> = ({action}) => {
+const UserForm: React.FC<Props> = ({action, formType}) => {
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
+  const [userName, setUserName] = useState<string>();
 
   const handleSubmit = useCallback(async () => {
     await action({variables: {email, password}});
@@ -29,6 +32,16 @@ const UserForm: React.FC<Props> = ({action}) => {
 
   return (
     <View style={styles.container}>
+      {formType === AuthenticationFormType.SignUp && (
+        <TextInput
+          style={styles.input}
+          onChangeText={text => setUserName(text)}
+          placeholder="Username"
+          placeholderTextColor={GRAY_4}
+          value={userName}
+          autoCapitalize="none"
+        />
+      )}
       <TextInput
         style={styles.input}
         onChangeText={text => setEmail(text)}
@@ -37,7 +50,6 @@ const UserForm: React.FC<Props> = ({action}) => {
         value={email}
         textContentType="emailAddress"
         autoComplete="email"
-        autoFocus={true}
         autoCapitalize="none"
       />
       <TextInput

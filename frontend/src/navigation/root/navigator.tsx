@@ -4,7 +4,7 @@ import {RootStackParamListType} from './types';
 import NoteDetailsScreen from '../../screens/details/NoteDetailsScreen';
 import TabNavigator from '../tab/navigator';
 import {rootStackOptions} from '../options';
-import LoginScreen from '../../screens/login/LoginScreen';
+import {AuthenticationStackNavigator} from '../authentication/navigator';
 
 export const RootStackNavigator = ({}): JSX.Element => {
   const RootStack = createStackNavigator<RootStackParamListType>();
@@ -12,7 +12,7 @@ export const RootStackNavigator = ({}): JSX.Element => {
     <RootStack.Navigator>
       <RootStack.Screen
         name="Authentication"
-        component={LoginScreen}
+        component={AuthenticationStackNavigator}
         options={rootStackOptions}
       />
       <RootStack.Screen
