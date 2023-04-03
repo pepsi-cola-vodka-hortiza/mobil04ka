@@ -15,8 +15,8 @@ const SettingsScreen: React.FC<Props> = () => {
     try {
       await AsyncStorage.removeItem('token');
       replace('Authentication');
-    } catch (error) {
-      console.warn(error);
+    } catch (e) {
+      console.warn(e);
     }
   }, [replace]);
 
