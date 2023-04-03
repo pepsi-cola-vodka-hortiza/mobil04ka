@@ -1,23 +1,31 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {
   View,
   Text,
   TextInput,
-  Button,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import {GRAY_1, GRAY_3, GRAY_4, GRAY_5, PINK_1} from '../constants/colors';
+import {
+  GRAY_1,
+  GRAY_3,
+  GRAY_4,
+  GRAY_5,
+  PINK_1,
+  TEXT_INPUT_GREY,
+} from '../constants/colors';
 
-type Props = {};
+type Props = {
+  action: (variables: any) => Promise<any>; // типизировать
+};
 
-const UserForm: React.FC<Props> = () => {
+const UserForm: React.FC<Props> = ({action}) => {
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
 
-  const handleSubmit = () => {
-    // this function is called when the user presses the form button
-  };
+  const handleSubmit = useCallback(async () => {
+    await action({variables: {email, password}});
+  }, [action, email, password]);
 
   return (
     <View style={styles.container}>
@@ -41,7 +49,7 @@ const UserForm: React.FC<Props> = () => {
         textContentType="password"
         secureTextEntry={true}
       />
-      <TouchableOpacity style={styles.buttonContainer}>
+      <TouchableOpacity style={styles.buttonContainer} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Log In</Text>
       </TouchableOpacity>
     </View>
@@ -63,6 +71,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 16,
     backgroundColor: GRAY_3,
+    color: TEXT_INPUT_GREY,
     width: '100%',
   },
   buttonContainer: {

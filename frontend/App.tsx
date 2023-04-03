@@ -2,11 +2,30 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import type {ReactNode} from 'react';
-import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
+import {
+  ApolloClient,
+  ApolloProvider,
+  createHttpLink,
+  InMemoryCache,
+} from '@apollo/client';
+import {setContext} from '@apollo/client/link/context';
 import {RootStackNavigator} from './src/navigation/root/navigator';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const httpLink = createHttpLink({uri: 'http://localhost:4000/api'});
+
+const authLink = setContext(async (_, {headers}) => {
+  return {
+    headers: {
+      ...headers,
+      authorization: (await AsyncStorage.getItem('token')) || '',
+    },
+  };
+});
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/api',
+  // @ts-ignore
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
