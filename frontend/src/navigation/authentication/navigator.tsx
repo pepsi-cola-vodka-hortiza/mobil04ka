@@ -1,9 +1,9 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {AuthenticationStackParamListType} from './types';
-import TabNavigator from '../tab/navigator';
 import {rootStackOptions} from '../options';
 import SignInScreen from '../../screens/authentication/signin/SignInScreen';
+import SignUpScreen from '../../screens/authentication/signup/SignUpScreen';
 
 export const AuthenticationStackNavigator = ({}): JSX.Element => {
   const AuthenticationStack =
@@ -17,7 +17,7 @@ export const AuthenticationStackNavigator = ({}): JSX.Element => {
       />
       <AuthenticationStack.Screen
         name="SignUp"
-        component={TabNavigator}
+        component={SignUpScreen}
         options={rootStackOptions}
       />
     </AuthenticationStack.Navigator>

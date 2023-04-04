@@ -1,19 +1,21 @@
-import React, {useCallback, useEffect} from 'react';
-import {View, Button} from 'react-native';
+import React, {useCallback} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamListType} from '../../../navigation/root/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import UserForm from '../components/UserForm';
 import {useMutation} from '@apollo/client';
-import {SIGNIN_USER} from '../../../gql/mutation';
+import {SIGNUP_USER} from '../../../gql/mutation';
+import {AuthenticationFormType} from '../components/types';
+import {StyleSheet, View} from 'react-native';
+import {GRAY_1, GRAY_5, PINK_1} from '../../../constants/colors';
 
 type Props = {};
 
 const SignUpScreen: React.FC<Props> = () => {
   const {replace} =
     useNavigation<StackNavigationProp<RootStackParamListType>>();
-  const [signIn, {loading, error}] = useMutation(SIGNIN_USER, {
+  const [signUp, {loading, error}] = useMutation(SIGNUP_USER, {
     onCompleted: data => storeToken(data.signIn),
   });
 
@@ -29,23 +31,18 @@ const SignUpScreen: React.FC<Props> = () => {
     [replace],
   );
 
-  const checkLoginState = useCallback(async () => {
-    const token = await AsyncStorage.getItem('token');
-    if (!token) {
-      return;
-    }
-    /*navigate('RootTabs');*/
-  }, []);
-
-  useEffect(() => {
-    checkLoginState();
-  });
-
   return (
-    <View>
-      <UserForm action={signIn} />
+    <View style={styles.wrapper}>
+      <UserForm formType={AuthenticationFormType.SignUp} action={signUp} />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: GRAY_1,
+    height: '100%',
+  },
+});
 
 export default SignUpScreen;

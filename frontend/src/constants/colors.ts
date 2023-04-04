@@ -8,6 +8,7 @@ export const TEXT_INPUT_GREY = '#CAD0D8';
 export const TEXT_GREY = '#EBEEF0';
 
 export const INDIGO_1 = '#AD9BF6';
+export const INDIGO_2 = '#ad9bf6';
 
 export const PURPLE_1 = '#B794F4';
 
