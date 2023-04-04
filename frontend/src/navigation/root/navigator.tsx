@@ -6,10 +6,17 @@ import TabNavigator from '../tab/navigator';
 import {rootStackOptions} from '../options';
 import {AuthenticationStackNavigator} from '../authentication/navigator';
 
-export const RootStackNavigator = ({}): JSX.Element => {
+interface RootStackNavigatorProps {
+  initialRouteName?: keyof RootStackParamListType;
+}
+
+export const RootStackNavigator = ({
+  initialRouteName,
+}: RootStackNavigatorProps): JSX.Element => {
   const RootStack = createStackNavigator<RootStackParamListType>();
+  console.log('initialRouteName: ', initialRouteName);
   return (
-    <RootStack.Navigator>
+    <RootStack.Navigator initialRouteName={initialRouteName}>
       <RootStack.Screen
         name="Authentication"
         component={AuthenticationStackNavigator}

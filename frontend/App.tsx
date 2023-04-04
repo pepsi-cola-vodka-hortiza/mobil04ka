@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import type {ReactNode} from 'react';
@@ -29,11 +29,30 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+type InitialAppRouteType = 'RootTabs' | 'Authentication';
+
 const App: () => ReactNode = () => {
+  const [initialRouteName, setInitialRouteName] =
+    useState<InitialAppRouteType>();
+
+  const checkLoginState = useCallback(async () => {
+    const token = await AsyncStorage.getItem('token');
+    console.log(token);
+    if (!token) {
+      return;
+    }
+    setInitialRouteName('RootTabs');
+  }, []);
+
+  useEffect(() => {
+    checkLoginState();
+  }, [checkLoginState]);
+
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>
-        <RootStackNavigator></RootStackNavigator>
+        <RootStackNavigator
+          initialRouteName={initialRouteName}></RootStackNavigator>
       </NavigationContainer>
     </ApolloProvider>
   );

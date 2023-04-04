@@ -8,13 +8,7 @@ import UserForm from '../components/UserForm';
 import {useMutation} from '@apollo/client';
 import {SIGNIN_USER} from '../../../gql/mutation';
 import {AuthenticationFormType} from '../components/types';
-import {
-  GRAY_1,
-  GRAY_5,
-  INDIGO_2,
-  PINK_1,
-  TEXT_GREY,
-} from '../../../constants/colors';
+import {GRAY_1, INDIGO_2, TEXT_GREY} from '../../../constants/colors';
 
 type Props = {};
 
@@ -41,18 +35,6 @@ const SignInScreen: React.FC<Props> = () => {
     [replace],
   );
 
-  const checkLoginState = useCallback(async () => {
-    const token = await AsyncStorage.getItem('token');
-    if (!token) {
-      return;
-    }
-    /*navigate('RootTabs');*/
-  }, []);
-
-  useEffect(() => {
-    checkLoginState();
-  });
-
   return (
     <View style={styles.wrapper}>
       <UserForm formType={AuthenticationFormType.SignIn} action={signIn} />
@@ -70,6 +52,7 @@ const SignInScreen: React.FC<Props> = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
+    justifyContent: 'center',
     backgroundColor: GRAY_1,
     height: '100%',
   },

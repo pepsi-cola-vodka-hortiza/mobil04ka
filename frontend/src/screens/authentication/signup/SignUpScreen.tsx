@@ -8,7 +8,7 @@ import {useMutation} from '@apollo/client';
 import {SIGNUP_USER} from '../../../gql/mutation';
 import {AuthenticationFormType} from '../components/types';
 import {StyleSheet, View} from 'react-native';
-import {GRAY_1, GRAY_5, PINK_1} from '../../../constants/colors';
+import {GRAY_1} from '../../../constants/colors';
 
 type Props = {};
 
@@ -40,6 +40,7 @@ const SignUpScreen: React.FC<Props> = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
+    justifyContent: 'center',
     backgroundColor: GRAY_1,
     height: '100%',
   },
