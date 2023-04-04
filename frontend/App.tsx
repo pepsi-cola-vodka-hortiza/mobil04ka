@@ -37,11 +37,12 @@ const App: () => ReactNode = () => {
 
   const checkLoginState = useCallback(async () => {
     const token = await AsyncStorage.getItem('token');
-    console.log(token);
+
     if (!token) {
-      return;
+      setInitialRouteName('Authentication');
+    } else {
+      setInitialRouteName('RootTabs');
     }
-    setInitialRouteName('RootTabs');
   }, []);
 
   useEffect(() => {
@@ -51,8 +52,10 @@ const App: () => ReactNode = () => {
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>
-        <RootStackNavigator
-          initialRouteName={initialRouteName}></RootStackNavigator>
+        {initialRouteName && (
+          <RootStackNavigator
+            initialRouteName={initialRouteName}></RootStackNavigator>
+        )}
       </NavigationContainer>
     </ApolloProvider>
   );

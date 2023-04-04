@@ -14,7 +14,7 @@ const SettingsScreen: React.FC<Props> = () => {
   const signOut = useCallback(async () => {
     try {
       await AsyncStorage.removeItem('token');
-      replace('Authentication');
+      replace('Authentication', {screen: 'SignIn'});
     } catch (e) {
       console.warn(e);
     }

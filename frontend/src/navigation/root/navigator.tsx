@@ -14,7 +14,7 @@ export const RootStackNavigator = ({
   initialRouteName,
 }: RootStackNavigatorProps): JSX.Element => {
   const RootStack = createStackNavigator<RootStackParamListType>();
-  console.log('initialRouteName: ', initialRouteName);
+
   return (
     <RootStack.Navigator initialRouteName={initialRouteName}>
       <RootStack.Screen
