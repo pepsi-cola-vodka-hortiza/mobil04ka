@@ -1,13 +1,14 @@
 import React, {useCallback} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
-import {useQuery} from '@apollo/client';
-import {GET_NOTES} from '../../gql/query';
+import {useMutation, useQuery} from '@apollo/client';
+import {GET_MY_FAVORITES, GET_NOTES} from '../../gql/query';
 import {GRAY_1, INDIGO_1} from '../../constants/colors';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamListType} from '../../navigation/root/types';
 import {AddIcon} from '../../components/icon';
 import NoteList from '../../components/NoteList';
+import {TOGGLE_FAVORITE} from '../../gql/mutation';
 
 type Props = {};
 
@@ -15,6 +16,10 @@ const FeedScreen: React.FC<Props> = () => {
   const {navigate} =
     useNavigation<StackNavigationProp<RootStackParamListType>>();
   const {data: {notes} = {}, loading, error, refetch} = useQuery(GET_NOTES);
+  const {data: {me} = {}} = useQuery(GET_MY_FAVORITES);
+  const [toggleFavorites] = useMutation(TOGGLE_FAVORITE, {
+    refetchQueries: [{query: GET_NOTES}, {query: GET_MY_FAVORITES}],
+  });
 
   const onPress = useCallback(
     (id: string) => {
@@ -27,6 +32,8 @@ const FeedScreen: React.FC<Props> = () => {
     <>
       <NoteList
         notes={notes}
+        toggleFavorites={toggleFavorites}
+        favorites={me?.favorites}
         loading={loading}
         refetch={refetch}
         onPressHandler={onPress}

@@ -1,6 +1,6 @@
 export type BottomTabParamListType = {
-  Feed: undefined;
-  Favorites: undefined;
-  Mine: undefined;
-  Settings: undefined;
+  FeedStack: undefined;
+  FavoritesStack: undefined;
+  MineStack: undefined;
+  SettingsStack: undefined;
 };

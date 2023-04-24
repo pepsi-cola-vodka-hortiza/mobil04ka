@@ -20,28 +20,28 @@ export const TabNavigator = (): JSX.Element | null => {
     <Tab.Navigator screenOptions={tabBarNavigatorOptions}>
       <Tab.Screen
         navigationKey="FeedStack"
-        name="Feed"
+        name="FeedStack"
         options={feedStackOptions}
         component={FeedNavigator}
       />
 
       <Tab.Screen
         navigationKey="MyNotesStack"
-        name="Mine"
+        name="MineStack"
         options={myNotesStackOptions}
         component={MyNotesNavigator}
       />
 
       <Tab.Screen
         navigationKey="FavoritesStack"
-        name="Favorites"
+        name="FavoritesStack"
         options={favoritesStackOptions}
         component={FavoritesNavigator}
       />
 
       <Tab.Screen
         navigationKey="Settings"
-        name="Settings"
+        name="SettingsStack"
         options={settingsOptions}
         component={SettingsScreen}
       />

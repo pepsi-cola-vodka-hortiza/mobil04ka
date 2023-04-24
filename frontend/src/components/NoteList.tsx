@@ -10,9 +10,12 @@ import {NoteItem} from './NoteItem';
 import {GRAY_1} from '../constants/colors';
 import {ApolloQueryResult, OperationVariables} from '@apollo/client';
 import Spinner from './Spinner';
+import LikeWrapper from './LikeWrapper';
 
 type Props = {
   notes: NoteModel[];
+  toggleFavorites: any;
+  favorites: NoteModel[];
   loading: boolean;
   refetch: (
     variables?: Partial<OperationVariables> | undefined,
@@ -22,6 +25,8 @@ type Props = {
 
 const NoteList: React.FC<Props> = ({
   notes,
+  toggleFavorites,
+  favorites,
   loading,
   refetch,
   onPressHandler,
@@ -41,9 +46,19 @@ const NoteList: React.FC<Props> = ({
         data={notes}
         keyExtractor={({id}) => id}
         renderItem={({item}) => (
-          <TouchableOpacity onPress={() => onPressHandler(item.id)}>
-            <NoteItem content={item.content} />
-          </TouchableOpacity>
+          <>
+            <TouchableOpacity onPress={() => onPressHandler(item.id)}>
+              <NoteItem content={item.content} />
+            </TouchableOpacity>
+            {item.id && favorites && item?.favoritedBy ? (
+              <LikeWrapper
+                id={item.id}
+                toggleFavorites={toggleFavorites}
+                favorites={favorites}
+                favoritedBy={item?.favoritedBy}
+              />
+            ) : null}
+          </>
         )}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />

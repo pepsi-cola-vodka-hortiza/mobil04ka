@@ -6,14 +6,48 @@ import addIcon from '../../../images/icons/add.svg';
 import paperBagIcon from '../../../images/icons/paper-bag.svg';
 import thunderIcon from '../../../images/icons/thunder.svg';
 import settingsIcon from '../../../images/icons/settings.svg';
+import likeIcon from '../../../images/icons/like.svg';
+import likeOutlinedIcon from '../../../images/icons/like-outlined.svg';
+import {TEXT_INPUT_GREY} from '../../constants/colors';
 
 type IconProps = {
+  color?: string;
   width?: number;
   height?: number;
 };
 
 const SvgXmlWithRTL: React.FC<XmlProps> = ({xml, style, ...rest}) => (
   <SvgXml xml={xml} style={style} {...rest} />
+);
+
+const LikeOutlinedIcon = ({
+  width = 24,
+  height = 24,
+  color = TEXT_INPUT_GREY,
+  ...rest
+}: IconProps): JSX.Element => (
+  <SvgXmlWithRTL
+    xml={likeOutlinedIcon}
+    color={color}
+    width={width}
+    height={height}
+    {...rest}
+  />
+);
+
+const LikeIcon = ({
+  width = 32,
+  height = 32,
+  color = TEXT_INPUT_GREY,
+  ...rest
+}: IconProps): JSX.Element => (
+  <SvgXmlWithRTL
+    xml={likeIcon}
+    color={color}
+    width={width}
+    height={height}
+    {...rest}
+  />
 );
 
 const AddIcon = ({
@@ -56,4 +90,12 @@ const SettingsIcon = ({
   <SvgXmlWithRTL xml={settingsIcon} width={width} height={height} {...rest} />
 );
 
-export {HeartIcon, ThunderIcon, PaperBagIcon, AddIcon, SettingsIcon};
+export {
+  LikeIcon,
+  LikeOutlinedIcon,
+  HeartIcon,
+  ThunderIcon,
+  PaperBagIcon,
+  AddIcon,
+  SettingsIcon,
+};
