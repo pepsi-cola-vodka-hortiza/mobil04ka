@@ -42,7 +42,7 @@ module.exports = {
       return jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     },
 
-    createNote: (parent, args, { models, user }) => {
+    createNote: async (parent, args, { models, user }) => {
       if (!user) {
         new AuthenticationError("You must be signed in to create a note");
       }
@@ -129,6 +129,27 @@ module.exports = {
           }
         );
       }
+    },
+
+    addComment: async (parent, { id, text }, { models, user }) => {
+      if (!user) {
+        new AuthenticationError("You must be signed in to add comment");
+      }
+
+      return models.Note.findByIdAndUpdate(
+        id,
+        {
+          $push: {
+            comments: {
+              author: mongoose.Types.ObjectId(user.id),
+              text,
+            },
+          },
+        },
+        {
+          new: true,
+        }
+      );
     },
   },
 };

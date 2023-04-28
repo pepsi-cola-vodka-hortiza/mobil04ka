@@ -18,6 +18,14 @@ module.exports = gql`
     updatedAt: DateTime!
     favoriteCount: Int!
     favoritedBy: [User]
+    comments: [Comment]
+  }
+  type Comment {
+    id: ID!
+    author: User!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    text: String!
   }
   type Query {
     notes: [Note]
@@ -33,5 +41,6 @@ module.exports = gql`
     deleteNote(id: ID!): Boolean!
     updateNote(id: ID!, content: String!): Boolean!
     toggleFavorite(id: ID!): Note!
+    addComment(id: ID!, text: String!): Note!
   }
 `;
