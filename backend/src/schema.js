@@ -42,5 +42,6 @@ module.exports = gql`
     updateNote(id: ID!, content: String!): Boolean!
     toggleFavorite(id: ID!): Note!
     addComment(id: ID!, text: String!): Note!
+    removeComment(noteId: ID!, commentId: ID!): Note!
   }
 `;

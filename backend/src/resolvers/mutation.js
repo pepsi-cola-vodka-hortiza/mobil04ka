@@ -151,5 +151,27 @@ module.exports = {
         }
       );
     },
+
+    removeComment: async (parent, { noteId, commentId }, { models, user }) => {
+      const note = await models.Note.findById(noteId);
+      const comment = note.comments.find((element) => element.id === commentId);
+
+      if (!user) {
+        new AuthenticationError("You must be signed in to create a note");
+      }
+      if (comment && String(comment.author._id) !== user.id) {
+        new ForbiddenError("You dont have permission to delete comment");
+      }
+
+      return models.Note.findByIdAndUpdate(
+        noteId,
+        {
+          $pull: { comments: { _id: mongoose.Types.ObjectId(commentId) } },
+        },
+        {
+          new: true,
+        }
+      );
+    },
   },
 };
