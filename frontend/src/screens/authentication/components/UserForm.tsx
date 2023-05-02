@@ -24,21 +24,21 @@ type Props = {
 const UserForm: React.FC<Props> = ({action, formType}) => {
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
-  const [userName, setUserName] = useState<string>();
+  const [username, setUsername] = useState<string>();
 
   const handleSubmit = useCallback(async () => {
-    await action({variables: {email, password}});
-  }, [action, email, password]);
+    await action({variables: {username, email, password}});
+  }, [action, email, password, username]);
 
   return (
     <View style={styles.container}>
       {formType === AuthenticationFormType.SignUp && (
         <TextInput
           style={styles.input}
-          onChangeText={text => setUserName(text)}
+          onChangeText={text => setUsername(text)}
           placeholder="Username"
           placeholderTextColor={GRAY_4}
-          value={userName}
+          value={username}
           autoCapitalize="none"
         />
       )}
@@ -62,7 +62,9 @@ const UserForm: React.FC<Props> = ({action, formType}) => {
         secureTextEntry={true}
       />
       <TouchableOpacity style={styles.buttonContainer} onPress={handleSubmit}>
-        <Text style={styles.buttonText}>Log In</Text>
+        <Text style={styles.buttonText}>
+          {formType === AuthenticationFormType.SignUp ? 'Sign Up' : 'Log In'}
+        </Text>
       </TouchableOpacity>
     </View>
   );

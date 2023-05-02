@@ -16,7 +16,7 @@ const SignUpScreen: React.FC<Props> = () => {
   const {replace} =
     useNavigation<StackNavigationProp<RootStackParamListType>>();
   const [signUp, {loading, error}] = useMutation(SIGNUP_USER, {
-    onCompleted: data => storeToken(data.signIn),
+    onCompleted: data => storeToken(data.signUp),
   });
 
   const storeToken = useCallback(
