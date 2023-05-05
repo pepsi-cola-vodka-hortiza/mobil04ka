@@ -1,19 +1,20 @@
 import React, {useCallback, useState} from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import {LikeIcon, LikeOutlinedIcon} from './icon';
-import {NoteModel, UserModel} from '../types';
+import {NoteModel} from '../types';
+import {TEXT_GREY} from '../constants/colors';
 
 type Props = {
   favorites: NoteModel[];
   toggleFavorites: any;
-  favoritedBy: UserModel[];
+  favoriteCount: number;
   id: string;
 };
 
 const LikeWrapper: React.FC<Props> = ({
   favorites,
+  favoriteCount,
   toggleFavorites,
-  favoritedBy,
   id,
 }) => {
   const [isActive, setActive] = useState(
@@ -25,16 +26,24 @@ const LikeWrapper: React.FC<Props> = ({
     toggleFavorites({variables: {id}});
   }, [id, isActive, toggleFavorites]);
 
-  const getFavoritedByForNote = useCallback(() => {
-    return favoritedBy?.map(user => {
-      return <Text>{user.username}</Text>;
-    });
-  }, [favoritedBy]);
-
   return (
-    <TouchableOpacity onPress={onClickHandler}>
+    <TouchableOpacity style={styles.wrapper} onPress={onClickHandler}>
       {isActive ? <LikeIcon /> : <LikeOutlinedIcon />}
+      <Text style={styles.text}>{favoriteCount}</Text>
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 16,
+    color: TEXT_GREY,
+    marginLeft: 4,
+  },
+});
+
 export default LikeWrapper;

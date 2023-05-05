@@ -11,5 +11,6 @@ export const INDIGO_1 = '#AD9BF6';
 export const INDIGO_2 = '#ad9bf6';
 
 export const PURPLE_1 = '#B794F4';
+export const PURPLE_2 = '#553C9A';
 
 export const PINK_1 = '#F687B3';

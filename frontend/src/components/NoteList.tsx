@@ -53,9 +53,9 @@ const NoteList: React.FC<Props> = ({
             {item.id && favorites && item?.favoritedBy ? (
               <LikeWrapper
                 id={item.id}
+                favoriteCount={item?.favoriteCount}
                 toggleFavorites={toggleFavorites}
                 favorites={favorites}
-                favoritedBy={item?.favoritedBy}
               />
             ) : null}
           </TouchableOpacity>
