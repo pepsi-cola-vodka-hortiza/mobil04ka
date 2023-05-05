@@ -21,8 +21,8 @@ const SvgXmlWithRTL: React.FC<XmlProps> = ({xml, style, ...rest}) => (
 );
 
 const LikeOutlinedIcon = ({
-  width = 18,
-  height = 18,
+  width = 16,
+  height = 16,
   color = TEXT_INPUT_GREY,
   ...rest
 }: IconProps): JSX.Element => (
@@ -36,8 +36,8 @@ const LikeOutlinedIcon = ({
 );
 
 const LikeIcon = ({
-  width = 18,
-  height = 18,
+  width = 16,
+  height = 16,
   color = TEXT_INPUT_GREY,
   ...rest
 }: IconProps): JSX.Element => (

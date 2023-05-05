@@ -72,6 +72,13 @@ export const GET_NOTE = gql`
       author {
         username
       }
+      comments {
+        id
+        text
+        author {
+          username
+        }
+      }
       favoriteCount
       createdAt
     }

@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -8,7 +8,7 @@ import UserForm from '../components/UserForm';
 import {useMutation} from '@apollo/client';
 import {SIGNIN_USER} from '../../../gql/mutation';
 import {AuthenticationFormType} from '../components/types';
-import {GRAY_1, INDIGO_2, TEXT_GREY} from '../../../constants/colors';
+import {GRAY_1, INDIGO_1, TEXT_GREY} from '../../../constants/colors';
 
 type Props = {};
 
@@ -68,11 +68,11 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     borderBottomWidth: 1,
-    borderColor: INDIGO_2,
+    borderColor: INDIGO_1,
   },
   buttonText: {
     fontSize: 14,
-    color: INDIGO_2,
+    color: INDIGO_1,
   },
 });
 

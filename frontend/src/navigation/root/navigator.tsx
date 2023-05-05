@@ -27,7 +27,11 @@ export const RootStackNavigator = ({
         component={TabNavigator}
         options={rootStackOptions}
       />
-      <RootStack.Screen name="NoteDetails" component={NoteDetailsScreen} />
+      <RootStack.Screen
+        name="NoteDetails"
+        component={NoteDetailsScreen}
+        options={rootStackOptions}
+      />
     </RootStack.Navigator>
   );
 };

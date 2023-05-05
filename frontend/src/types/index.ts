@@ -7,6 +7,12 @@ export type UserModel = {
   favorites: NoteModel[];
 };
 
+export type CommentModel = {
+  id: string;
+  text: string;
+  author: UserModel;
+};
+
 export type NoteModel = {
   id: string;
   content: string;
@@ -15,4 +21,5 @@ export type NoteModel = {
   updatedAt: string;
   favoriteCount: number;
   favoritedBy: UserModel[];
+  comments: CommentModel[];
 };
