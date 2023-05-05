@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import {useMutation, useQuery} from '@apollo/client';
 import {GET_MY_FAVORITES, GET_NOTES} from '../../gql/query';
-import {GRAY_1, INDIGO_1} from '../../constants/colors';
+import {INDIGO_1} from '../../constants/colors';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamListType} from '../../navigation/root/types';
@@ -50,10 +50,6 @@ const FeedScreen: React.FC<Props> = () => {
 export default FeedScreen;
 
 const styles = StyleSheet.create({
-  list: {
-    paddingHorizontal: 16,
-    backgroundColor: GRAY_1,
-  },
   buttonContainer: {
     position: 'absolute',
     backgroundColor: INDIGO_1,

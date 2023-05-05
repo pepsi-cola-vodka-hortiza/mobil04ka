@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {GRAY_2, TEXT_GREY} from '../constants/colors';
+import {TEXT_GREY} from '../constants/colors';
 
 type Props = {content: string};
 
@@ -14,9 +14,7 @@ export const NoteItem: React.FC<Props> = ({content}) => {
 
 const styles = StyleSheet.create({
   item: {
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderColor: GRAY_2,
+    marginBottom: 12,
   },
   text: {
     fontSize: 16,

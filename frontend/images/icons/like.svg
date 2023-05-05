@@ -1,4 +1,14 @@
-<svg width="32" height="32" fill="#CAD0D8" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11.9999 15C-3.33311 4.86803 7.27889 -3.03994 11.8239 1.14304C11.8839 1.19804 11.9429 1.25504 11.9999 1.31404C12.0563 1.2551 12.115 1.19839 12.1759 1.14404C16.7199 -3.04194 27.3329 4.86703 11.9999 15Z" fill="#CAD0D8"/>
-        <path d="M11.4853 1.51095L11.486 1.51162C11.5396 1.56072 11.5912 1.61066 11.6403 1.66145L12.0016 2.0354L12.3611 1.65978C12.4085 1.61028 12.4578 1.56265 12.5089 1.51702L12.5089 1.51707L12.5147 1.51179C14.515 -0.33098 17.917 0.470515 19.0909 2.91861C19.6637 4.11315 19.7223 5.7541 18.6912 7.74121C17.6796 9.69077 15.621 11.9622 11.9999 14.399C8.37878 11.9624 6.32015 9.69125 5.30844 7.74187C4.27724 5.75495 4.33573 4.11413 4.9085 2.91959C6.08234 0.471478 9.48443 -0.330551 11.4853 1.51095Z"/>
+<svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_b_11_1514)">
+                <path d="M7.9999 15C-7.33311 4.86803 3.27889 -3.03994 7.8239 1.14304C7.8839 1.19804 7.9429 1.25504 7.9999 1.31404C8.0563 1.2551 8.115 1.19839 8.1759 1.14404C12.7199 -3.04194 23.3329 4.86703 7.9999 15Z" fill="#CAD0D8"/>
+        </g>
+        <defs>
+                <filter id="filter0_b_11_1514" x="-4" y="-4" width="24" height="23" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feGaussianBlur in="BackgroundImageFix" stdDeviation="2"/>
+                        <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_11_1514"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_11_1514" result="shape"/>
+                </filter>
+        </defs>
 </svg>
+

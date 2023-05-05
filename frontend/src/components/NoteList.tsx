@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import {NoteModel} from '../types';
 import {NoteItem} from './NoteItem';
-import {GRAY_1} from '../constants/colors';
+import {GRAY_1, GRAY_2} from '../constants/colors';
 import {ApolloQueryResult, OperationVariables} from '@apollo/client';
 import Spinner from './Spinner';
 import LikeWrapper from './LikeWrapper';
@@ -46,10 +46,10 @@ const NoteList: React.FC<Props> = ({
         data={notes}
         keyExtractor={({id}) => id}
         renderItem={({item}) => (
-          <>
-            <TouchableOpacity onPress={() => onPressHandler(item.id)}>
-              <NoteItem content={item.content} />
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.noteWrapper}
+            onPress={() => onPressHandler(item.id)}>
+            <NoteItem content={item.content} />
             {item.id && favorites && item?.favoritedBy ? (
               <LikeWrapper
                 id={item.id}
@@ -58,7 +58,7 @@ const NoteList: React.FC<Props> = ({
                 favoritedBy={item?.favoritedBy}
               />
             ) : null}
-          </>
+          </TouchableOpacity>
         )}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -75,5 +75,10 @@ const styles = StyleSheet.create({
   list: {
     paddingHorizontal: 16,
     backgroundColor: GRAY_1,
+  },
+  noteWrapper: {
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderColor: GRAY_2,
   },
 });
