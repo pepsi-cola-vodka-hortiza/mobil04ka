@@ -44,3 +44,11 @@ export const settingsOptions: BottomTabNavigationOptions = {
   tabBarIcon: () => <SettingsIcon />,
   headerShown: false,
 };
+
+export const headerOptions: StackNavigationOptions = {
+  headerStyle: {
+    backgroundColor: GRAY_3,
+  },
+  headerShadowVisible: false,
+  headerTintColor: TEXT_GREY,
+};
