@@ -14,3 +14,5 @@ export const PURPLE_1 = '#B794F4';
 export const PURPLE_2 = '#553C9A';
 
 export const PINK_1 = '#F687B3';
+
+export const ORANGE = '#F59140';

@@ -21,12 +21,16 @@ const FeedScreen: React.FC<Props> = () => {
     refetchQueries: [{query: GET_NOTES}, {query: GET_MY_FAVORITES}],
   });
 
-  const onPress = useCallback(
+  const navigateToNoteDetails = useCallback(
     (id: string) => {
       navigate('NoteDetails', {id});
     },
     [navigate],
   );
+
+  const navigateToCreateNote = useCallback(() => {
+    navigate('CreateNote');
+  }, [navigate]);
 
   return (
     <>
@@ -36,11 +40,11 @@ const FeedScreen: React.FC<Props> = () => {
         favorites={me?.favorites}
         loading={loading}
         refetch={refetch}
-        onPressHandler={onPress}
+        onPressHandler={navigateToNoteDetails}
       />
       <TouchableOpacity
         style={styles.buttonContainer}
-        onPress={() => console.log('yo')}>
+        onPress={navigateToCreateNote}>
         <AddIcon />
       </TouchableOpacity>
     </>

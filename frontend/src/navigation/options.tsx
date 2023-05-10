@@ -8,6 +8,7 @@ import {
 } from '../components/icon';
 import {StackNavigationOptions} from '@react-navigation/stack';
 import {GRAY_3, PURPLE_2, TEXT_GREY} from '../constants/colors';
+import {SignOutButton} from './components/SignOutButton';
 
 export const tabBarNavigatorOptions: {lazy: boolean} = {
   tabBarStyle: {
@@ -51,4 +52,5 @@ export const headerOptions: StackNavigationOptions = {
   },
   headerShadowVisible: false,
   headerTintColor: TEXT_GREY,
+  headerRight: () => <SignOutButton />,
 };

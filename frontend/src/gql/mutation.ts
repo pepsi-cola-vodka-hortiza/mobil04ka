@@ -25,6 +25,22 @@ export const CREATE_NOTE = gql`
   }
 `;
 
+export const ADD_COMMENT = gql`
+  mutation addComment($id: ID!, $text: String!) {
+    addComment(id: $id, text: $text) {
+      id
+    }
+  }
+`;
+
+export const REMOVE_COMMENT = gql`
+  mutation removeComment($noteId: ID!, $commentId: ID!) {
+    removeComment(noteId: $noteId, commentId: $commentId) {
+      id
+    }
+  }
+`;
+
 export const UPDATE_NOTE = gql`
   mutation updateNote($updateNoteId: ID!, $content: String!) {
     updateNote(id: $updateNoteId, content: $content)

@@ -5,7 +5,6 @@ import heartIcon from '../../../images/icons/heart.svg';
 import addIcon from '../../../images/icons/add.svg';
 import paperBagIcon from '../../../images/icons/paper-bag.svg';
 import thunderIcon from '../../../images/icons/thunder.svg';
-import settingsIcon from '../../../images/icons/settings.svg';
 import likeIcon from '../../../images/icons/like.svg';
 import likeOutlinedIcon from '../../../images/icons/like-outlined.svg';
 import {TEXT_INPUT_GREY} from '../../constants/colors';

@@ -11,7 +11,6 @@ import {
   settingsOptions,
   tabBarNavigatorOptions,
 } from '../options';
-import SettingsScreen from '../../screens/settings/SettingsScreen';
 
 const Tab = createBottomTabNavigator<BottomTabParamListType>();
 
@@ -37,13 +36,6 @@ export const TabNavigator = (): JSX.Element | null => {
         name="FavoritesStack"
         options={favoritesStackOptions}
         component={FavoritesNavigator}
-      />
-
-      <Tab.Screen
-        navigationKey="Settings"
-        name="SettingsStack"
-        options={settingsOptions}
-        component={SettingsScreen}
       />
     </Tab.Navigator>
   );

@@ -5,6 +5,7 @@ import NoteDetailsScreen from '../../screens/details/NoteDetailsScreen';
 import TabNavigator from '../tab/navigator';
 import {rootStackOptions} from '../options';
 import {AuthenticationStackNavigator} from '../authentication/navigator';
+import CreateNoteScreen from '../../screens/create/CreateNoteScreen';
 
 interface RootStackNavigatorProps {
   initialRouteName?: keyof RootStackParamListType;
@@ -30,6 +31,11 @@ export const RootStackNavigator = ({
       <RootStack.Screen
         name="NoteDetails"
         component={NoteDetailsScreen}
+        options={rootStackOptions}
+      />
+      <RootStack.Screen
+        name="CreateNote"
+        component={CreateNoteScreen}
         options={rootStackOptions}
       />
     </RootStack.Navigator>

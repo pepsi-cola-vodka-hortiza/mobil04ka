@@ -42,6 +42,8 @@ const NoteList: React.FC<Props> = ({
   return (
     <>
       <FlatList
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         style={styles.list}
         data={notes}
         keyExtractor={({id}) => id}
