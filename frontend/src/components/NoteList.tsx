@@ -52,7 +52,7 @@ const NoteList: React.FC<Props> = ({
             style={styles.noteWrapper}
             onPress={() => onPressHandler(item.id)}>
             <NoteItem content={item.content} createdAt={item.createdAt} />
-            {item.id && favorites && item?.favoritedBy ? (
+            {item && favorites ? (
               <LikeWrapper
                 id={item.id}
                 favoriteCount={item?.favoriteCount}
