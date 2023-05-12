@@ -51,7 +51,7 @@ const NoteList: React.FC<Props> = ({
           <TouchableOpacity
             style={styles.noteWrapper}
             onPress={() => onPressHandler(item.id)}>
-            <NoteItem content={item.content} />
+            <NoteItem content={item.content} createdAt={item.createdAt} />
             {item.id && favorites && item?.favoritedBy ? (
               <LikeWrapper
                 id={item.id}
