@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import {LikeIcon, LikeOutlinedIcon} from './icon';
 import {NoteModel} from '../types';
@@ -21,10 +21,10 @@ const LikeWrapper: React.FC<Props> = ({
     favorites?.filter(note => note.id === id).length > 0,
   );
 
-  const onClickHandler = useCallback(() => {
+  const onClickHandler = () => {
     setActive(!isActive);
     toggleFavorites({variables: {id}});
-  }, [id, isActive, toggleFavorites]);
+  };
 
   return (
     <TouchableOpacity style={styles.wrapper} onPress={onClickHandler}>

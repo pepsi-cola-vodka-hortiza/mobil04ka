@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback} from 'react';
 import {useQuery} from '@apollo/client';
 import {GET_MY_FAVORITES} from '../../gql/query';
 import NoteList from '../../components/NoteList';

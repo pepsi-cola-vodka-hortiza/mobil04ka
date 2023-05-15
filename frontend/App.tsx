@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import type {ReactNode} from 'react';
@@ -35,7 +35,7 @@ const App: () => ReactNode = () => {
   const [initialRouteName, setInitialRouteName] =
     useState<InitialAppRouteType>();
 
-  const checkLoginState = useCallback(async () => {
+  const checkLoginState = async () => {
     const token = await AsyncStorage.getItem('token');
 
     if (!token) {
@@ -43,7 +43,7 @@ const App: () => ReactNode = () => {
     } else {
       setInitialRouteName('RootTabs');
     }
-  }, []);
+  };
 
   useEffect(() => {
     checkLoginState();

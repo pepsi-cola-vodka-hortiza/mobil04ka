@@ -51,9 +51,9 @@ const NoteDetailsScreen: React.FC<Props> = () => {
     },
   });
 
-  const handleSubmit = useCallback(async () => {
+  const handleSubmit = async () => {
     await addComment({variables: {id, text: comment}});
-  }, [addComment, comment, id]);
+  };
 
   const remove = useCallback(
     async (commentId: string) => {

@@ -19,9 +19,9 @@ const SignInScreen: React.FC<Props> = () => {
     onCompleted: data => storeToken(data.signIn),
   });
 
-  const navigateToSignUp = useCallback(() => {
+  const navigateToSignUp = () => {
     navigate('Authentication', {screen: 'SignUp'});
-  }, [navigate]);
+  };
 
   const storeToken = useCallback(
     async (token: string) => {

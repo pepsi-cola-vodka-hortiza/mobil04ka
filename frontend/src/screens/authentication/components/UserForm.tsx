@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -26,9 +26,9 @@ const UserForm: React.FC<Props> = ({action, formType}) => {
   const [password, setPassword] = useState<string>();
   const [username, setUsername] = useState<string>();
 
-  const handleSubmit = useCallback(async () => {
+  const handleSubmit = async () => {
     await action({variables: {username, email, password}});
-  }, [action, email, password, username]);
+  };
 
   return (
     <View style={styles.container}>
