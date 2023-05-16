@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -9,14 +9,20 @@ import {useMutation} from '@apollo/client';
 import {SIGNIN_USER} from '../../../gql/mutation';
 import {AuthenticationFormType} from '../components/types';
 import {GRAY_1, INDIGO_1, TEXT_GREY} from '../../../constants/colors';
+import {useShowNotification} from '../../../components/notification';
+import LoadingSpinner from '../../../components/loading/LoadingSpinner';
 
 type Props = {};
 
 const SignInScreen: React.FC<Props> = () => {
+  const [showNotification] = useShowNotification();
   const {replace, navigate} =
     useNavigation<StackNavigationProp<RootStackParamListType>>();
   const [signIn, {loading, error}] = useMutation(SIGNIN_USER, {
     onCompleted: data => storeToken(data.signIn),
+    onError: e => {
+      console.log(e);
+    },
   });
 
   const navigateToSignUp = () => {
@@ -46,6 +52,7 @@ const SignInScreen: React.FC<Props> = () => {
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
+      {loading && <LoadingSpinner />}
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import type {ReactNode} from 'react';
@@ -11,6 +11,8 @@ import {
 import {setContext} from '@apollo/client/link/context';
 import {RootStackNavigator} from './src/navigation/root/navigator';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {NotificationProvider} from './src/components/notification';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 const httpLink = createHttpLink({uri: 'http://localhost:4000/api'});
 
@@ -35,7 +37,7 @@ const App: () => ReactNode = () => {
   const [initialRouteName, setInitialRouteName] =
     useState<InitialAppRouteType>();
 
-  const checkLoginState = async () => {
+  const checkLoginState = useCallback(async () => {
     const token = await AsyncStorage.getItem('token');
 
     if (!token) {
@@ -43,7 +45,7 @@ const App: () => ReactNode = () => {
     } else {
       setInitialRouteName('RootTabs');
     }
-  };
+  }, []);
 
   useEffect(() => {
     checkLoginState();
@@ -51,12 +53,16 @@ const App: () => ReactNode = () => {
 
   return (
     <ApolloProvider client={client}>
-      <NavigationContainer>
-        {initialRouteName && (
-          <RootStackNavigator
-            initialRouteName={initialRouteName}></RootStackNavigator>
-        )}
-      </NavigationContainer>
+      <PaperProvider>
+        <NotificationProvider>
+          <NavigationContainer>
+            {initialRouteName && (
+              <RootStackNavigator
+                initialRouteName={initialRouteName}></RootStackNavigator>
+            )}
+          </NavigationContainer>
+        </NotificationProvider>
+      </PaperProvider>
     </ApolloProvider>
   );
 };
