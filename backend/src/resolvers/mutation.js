@@ -157,10 +157,13 @@ module.exports = {
       const comment = note.comments.find((element) => element.id === commentId);
 
       if (!user) {
-        new AuthenticationError("You must be signed in to create a note");
+        throw new AuthenticationError(
+          "You must be signed in to remove comment"
+        );
       }
+
       if (comment && String(comment.author._id) !== user.id) {
-        new ForbiddenError("You dont have permission to delete comment");
+        throw new ForbiddenError("You dont have permission to delete comment");
       }
 
       return models.Note.findByIdAndUpdate(
